@@ -1,6 +1,9 @@
-﻿@model CA.Common.ViewModels.ChatView
+﻿@model PagedList.IPagedList<CA.Domain.Entities.Message>
+@using PagedList.Mvc;
 
 @using System.Web.Mvc.Html
+    
+@Styles.Render("~/Content/PagedList.css")
 
 @{
     ViewBag.Title = "Index";
@@ -8,18 +11,20 @@
     Layout = "~/Areas/Default/Views/Shared/_Layout.cshtml";
 }
 
+@Html.Action("InputAjax")
+
 @{
-    if (Model.Messages == null)
+    if (!Model.Any())
     {
         <p>No messages</p>
     }
     else
     {
-        foreach (var mess in Model.Messages)
+        foreach (var mess in Model)
         {
             @Html.Action("Index", "Message", new { message = mess })
         }
     }
+    @Html.PagedListPager(Model, page => Url.Action("Index",  new { page }))
 
-    @Html.Action("Input")
 }

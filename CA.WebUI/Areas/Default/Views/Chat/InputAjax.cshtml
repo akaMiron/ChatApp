@@ -1,0 +1,15 @@
+﻿@model CA.Common.ViewModels.MessageView
+
+<div class="input">
+    @using (Ajax.BeginForm("InputAjax", null, new AjaxOptions { UpdateTargetId = "input" },
+    new { @class = "md-form mb-5", id = "RegisterForm" }))
+    {
+        <fieldset>
+            <div class="form-group d-flex justify-content-between p-3">
+                @Html.TextBox("Message", Model.Message, new { id = "message", @class = "form-control col-10", autocomplete = "off" })
+                @Html.ValidationMessage("Message", new { @class = "form-text text-danger" })
+                <button type="submit" class="col-1 btn btn-outline-primary"> <i class="fa fa-pencil"></i> </button>
+            </div>
+        </fieldset>
+    }
+</div>

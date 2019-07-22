@@ -14,6 +14,8 @@ namespace CA.WebUI
                 "~/Content/bootstrap.css",
                 "~/Content/bootstrap-theme.css"));
 
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/PagedList.css"));
+
             bundles.Add(new StyleBundle("~/Content/css/jqueryui")
                 .Include("~/Content/jquery-ui-1*"));
 

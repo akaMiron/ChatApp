@@ -11,7 +11,8 @@
         </button>
       </div>
       <div class="modal-body mx-3">
-          @using (Html.BeginForm("LoginAjax", "Login", FormMethod.Post, new {@class = "md-form mb-5", id = "LoginForm"}))
+          @using (Ajax.BeginForm("LoginAjax", null, new AjaxOptions { UpdateTargetId = "updatedModel" },
+              new { @class = "md-form mb-5", id = "LoginForm"} ))
           {
               <fieldset>
                   <legend>Вход</legend>

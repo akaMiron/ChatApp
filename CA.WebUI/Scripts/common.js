@@ -1,17 +1,12 @@
 ﻿function Common() {
     _this = this;
 
-    this.init = function () {
-        $("#LoginPopup").click(function () {
-            _this.showPopup("/Login/LoginAjax", initLoginPopup);
-        });
-    }
-
-    this.init = function () {
-        $("#RegisterPopup").click(function () {
-            _this.showPopup("/User/RegisterAjax", initRegisterPopup);
-        });
-    }
+    $("#LoginPopup").click(function () {
+        _this.showPopup("/Login/LoginAjax", initLoginPopup);
+    });
+    $("#RegisterPopup").click(function () {
+        _this.showPopup("/User/RegisterAjax", initRegisterPopup);
+    });
 
     this.showPopup = function (url, callback) {
         $.ajax({

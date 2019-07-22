@@ -1,7 +1,10 @@
 ﻿using CA.Common.ViewModels;
 using CA.Domain.Entities;
 using System;
+using System.Linq;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace CA.WebUI.Areas.Default.Controllers
 {
@@ -9,15 +12,15 @@ namespace CA.WebUI.Areas.Default.Controllers
     public class ChatController : DefaultController
     {
         // GET: Default/Chat
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            ChatView viewData = new ChatView
-            {
-                PageSize = 10, 
-                Messages = MessageRepository.GetAll()
-            };
 
-            return View(viewData);
+            var messages = MessageRepository.GetAll().Reverse(); 
+            
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(messages.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
@@ -40,12 +43,34 @@ namespace CA.WebUI.Areas.Default.Controllers
 
                 MessageRepository.Add(message);
             }
-            else
+
+            return RedirectToAction("Index", "Chat");
+        }
+
+
+        [HttpGet]
+        public ActionResult InputAjax()
+        {
+            return View(new MessageView());
+        }
+
+        [HttpPost]
+        public ActionResult InputAjax(MessageView messageView)
+        {
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Chat");
+                var message = AutoMapper.Mapper.Map<MessageView, Message>(messageView);
+
+                message.PostedTime = DateTime.Now;
+                message.UserId = CurrentUser.UserId;
+
+                MessageRepository.Add(message);
+
+                return View("_Ok");
             }
 
             return RedirectToAction("Index", "Chat");
+
         }
     }
 }
