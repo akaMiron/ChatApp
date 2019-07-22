@@ -17,6 +17,7 @@ namespace CA.Domain.Entities
         public int MessageId { get; set; }
         public string Message1 { get; set; }
         public int UserId { get; set; }
+        public Nullable<System.DateTime> PostedTime { get; set; }
     
         public virtual User User { get; set; }
     }

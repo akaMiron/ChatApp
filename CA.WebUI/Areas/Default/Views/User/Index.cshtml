@@ -1,0 +1,25 @@
+﻿@model IList<CA.Domain.Entities.User>
+
+@using CA.Resources;
+
+@{
+    ViewBag.Title = HomeResources.Users;
+
+    Layout = "~/Areas/Default/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@HomeResources.Users</h2>
+
+<p>
+    @foreach (var user in Model)
+    {
+        <div>
+            <span>
+                @user.Name
+            </span>
+            <span>
+                @user.Message.Count
+            </span>
+        </div>
+    }
+</p>

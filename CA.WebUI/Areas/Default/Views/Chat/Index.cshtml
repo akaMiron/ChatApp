@@ -1,0 +1,25 @@
+﻿@model CA.Common.ViewModels.ChatView
+
+@using System.Web.Mvc.Html
+
+@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Areas/Default/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (Model.Messages == null)
+    {
+        <p>No messages</p>
+    }
+    else
+    {
+        foreach (var mess in Model.Messages)
+        {
+            @Html.Action("Index", "Message", new { message = mess })
+        }
+    }
+
+    @Html.Action("Input")
+}

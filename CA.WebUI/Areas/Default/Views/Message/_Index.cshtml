@@ -1,0 +1,41 @@
+﻿@model CA.Domain.Entities.Message
+
+@{
+    if (Model == null)
+    {
+        <p>No message</p>
+    }
+    else
+    {
+        <div class="card m-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="avatar" alt=""/>
+                        <small class="text-muted d-block">@Model.PostedTime</small>
+                    </div>
+                    <div class="col-md-10">
+                            <a class="float-left" href="#"><strong>@Model.User.Name</strong></a>
+                        <div class="clearfix"></div>
+                        <p>@Model.Message1</p>
+                        <p>
+                            @if (ViewBag.Username == Model.User.Name)
+                            {
+                               @Html.ActionLink(
+                                         "Delete", 
+                                         "Delete", 
+                                         "Message",
+                                         new { id = Model.MessageId },
+                                         new { @class = "float-right btn btn-outline-danger ml-2",
+                                             @onclick = "return confirm('Are you sure you wish to delete this article?');" })
+                                
+                            }
+                            <a class="button float-right btn btn-outline-primary ml-2" role="button"> <i class="fa fa-reply"></i> Reply</a>
+                            <a class="button float-right btn text-white btn-danger" role="button"> <i class="fa fa-heart"></i> Like</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

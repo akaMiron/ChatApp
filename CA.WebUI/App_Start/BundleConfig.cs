@@ -14,6 +14,15 @@ namespace CA.WebUI
                 "~/Content/bootstrap.css",
                 "~/Content/bootstrap-theme.css"));
 
+            bundles.Add(new StyleBundle("~/Content/css/jqueryui")
+                .Include("~/Content/jquery-ui-1*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrapJs").Include(
+                "~/Scripts/bootstrap.bundle.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/LayoutJS").Include(
+                "~/Scripts/common.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
 
@@ -27,6 +36,8 @@ namespace CA.WebUI
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/fontawesome").Include("~/Content/fontawesome/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

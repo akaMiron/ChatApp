@@ -4,10 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="404a2e1efb30494e8cd91c0cfef25053" Name="Diagram1">
-        <EntityTypeShape EntityType="CA.DatabaseModel.Message" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CA.DatabaseModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="f15ea8abc2bf4155b14c3464ba9f43c2" Name="Diagram1">
+        <EntityTypeShape EntityType="CA.DatabaseModel.Message" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CA.DatabaseModel.Role" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CA.DatabaseModel.User" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="CA.DatabaseModel.FK_dbo_Message_dbo_User_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="CA.DatabaseModel.UserInRole" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

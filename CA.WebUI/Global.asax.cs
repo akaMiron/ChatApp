@@ -1,7 +1,4 @@
-﻿using CA.Common.Util;
-using Ninject;
-using Ninject.Modules;
-using Ninject.Web.Mvc;
+﻿using CA.Common.Mapper;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -16,19 +13,16 @@ namespace CA.WebUI
     {
         protected void Application_Start()
         {
+
             AreaRegistration.RegisterAllAreas();
+
+            MapperConfiguration.Configure();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            // внедрение зависимостей
-            NinjectModule registrations = new NinjectRegistrations();
-            var kernel = new StandardKernel(registrations);
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
-
-            AutomapperWebProfile.Run(); 
         }
     }
 }

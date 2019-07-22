@@ -1,0 +1,48 @@
+﻿@model CA.Common.ViewModels.LoginView
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+          @using (Html.BeginForm("LoginAjax", "Login", FormMethod.Post, new {@class = "md-form mb-5", id = "LoginForm"}))
+          {
+              <fieldset>
+                  <legend>Вход</legend>
+                  <div class="form-group">
+                      <label for="Name">
+                          Email
+                      </label>
+                      <div>
+                          @Html.TextBox("Name", Model.Name, new {@class = "form-control"})
+                          <p>Введите логин</p>
+                          @Html.ValidationMessage("Name")
+                      </div>
+
+                  </div>
+                  <div class="form-group">
+                      <label for="Password">
+                          Пароль
+                      </label>
+                      <div>
+                          @Html.Password("Password", Model.Password, new {@class = "form-control"})
+                          @Html.ValidationMessage("Password")
+                      </div>
+                  </div>
+              </fieldset>
+          }
+              
+          <div class="modal-footer">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+              <button class="btn btn-primary" id="LoginButton">Login</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

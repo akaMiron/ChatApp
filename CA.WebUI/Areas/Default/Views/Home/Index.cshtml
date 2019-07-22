@@ -1,0 +1,19 @@
+﻿@using CA.Resources
+@{
+    ViewBag.Title = HomeResources.Home;
+
+    Layout = "~/Areas/Default/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <p> Welcome, @User.Identity.Name</p>
+    }
+    else
+    {
+        @Html.ActionLink("Register", "Index", "Login")
+    }
+}

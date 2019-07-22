@@ -57,9 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -104,25 +102,15 @@
     <Compile Include="Entities\Message.cs">
       <DependentUpon>ChatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\MessageProxy.cs" />
+    <Compile Include="Entities\Role.cs">
+      <DependentUpon>ChatModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\User.cs">
       <DependentUpon>ChatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\UserProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="App.config" />
-    <EntityDeploy Include="Entities\ChatModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ChatModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Entities\ChatModel.edmx.diagram">
-      <DependentUpon>ChatModel.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entities\ChatModel.Context.tt">
@@ -135,6 +123,22 @@
       <DependentUpon>ChatModel.edmx</DependentUpon>
       <LastGenOutput>ChatModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Entities\ChatModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ChatModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\ChatModel.edmx.diagram">
+      <DependentUpon>ChatModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

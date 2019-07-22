@@ -26,6 +26,7 @@ namespace CA.Domain.Entities
         }
     
         public virtual DbSet<Message> Message { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

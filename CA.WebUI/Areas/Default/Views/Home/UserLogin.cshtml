@@ -1,0 +1,15 @@
+﻿@using System.Web.Mvc.Html
+@using CA.Resources
+
+@model CA.Domain.Entities.User
+
+@if (Model != null)
+{
+    <li class="list-inline-item nav-item">@Html.ActionLink(User.ToString(), "Account", "User", null, new { @class = "nav-link" })</li>
+    <li class="list-inline-item nav-item">@Html.ActionLink(HomeResources.Exit, "Logout", "Login", null, new { @class = "nav-link" })</li>
+}
+else
+{
+    <li class="list-inline-item nav-item"><span class="btn nav-link" id="LoginPopup">Вход</span></li>
+    <li class="list-inline-item nav-item"><span class="btn nav-link" id="RegisterPopup">Регистрация</span></li>
+}

@@ -1,0 +1,50 @@
+﻿@using System.Web.Mvc.Html
+@using CA.Resources
+@model CA.Common.ViewModels.UserView
+@{
+    ViewBag.Title = "Register";
+
+    Layout = "~/Areas/Default/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+@using (Html.BeginForm("Register", "User", FormMethod.Post))
+{
+    @*@Html.ValidationSummary()*@
+
+    <fieldset>
+        <div class="form-group">
+            <label for="name">
+                @LoginResources.Username
+            </label>
+            <div>
+                @Html.ValidationMessage("Name", new { @class = "form-text text-danger" })
+                @Html.TextBox("Name", Model.Name, new { id = "name", @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">
+                @LoginResources.Password
+            </label>
+            <div>
+                @Html.ValidationMessage("Password", new { @class = "form-text text-danger" })
+                @Html.Password("Password", Model.Password, new { id = "password", @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">
+                @LoginResources.ReEnterPassword
+            </label>
+            <div>
+                @Html.ValidationMessage("ConfirmPassword", new { @class = "form-text text-danger" })
+                @Html.Password("ConfirmPassword", Model.ConfirmPassword, new { id = "confirmPassword", @class = "form-control" })
+            </div>
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn btn-secondary">
+                @LoginResources.Register
+            </button>
+            @Html.ActionLink(HomeResources.GoBack, "Index", null, null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    </fieldset>
+}
